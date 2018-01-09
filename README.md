@@ -4,7 +4,7 @@ SpectreCheck is Tools that run [Microsoft Powershell SpeculationControl Module](
 
 ## Download
 
-Download the [latest release].
+Download the [latest release](https://github.com/settachok/SpectreCheck/releases/latest).
 
 ## Requirements
 
