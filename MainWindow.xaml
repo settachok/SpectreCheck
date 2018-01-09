@@ -1,0 +1,108 @@
+﻿<Window x:Class="SpectreCheck.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpectreCheck"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="SpectreCheck" Height="600" Width="800" ContentRendered="Window_ContentRendered">
+    <Grid>
+        <Label x:Name="Title" Content="SpectreCheck" HorizontalAlignment="Center" Margin="5" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="Scanning" Content="Scanning System..." Margin="0,40,0,0" />
+        <StackPanel x:Name="Result" Visibility="Collapsed" Margin="0,40,0,0" >
+            <StackPanel>
+                <Label x:Name="CVE20175715" Content="Speculation control settings for CVE-2017-5715" FontSize="16" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" x:Name="BTIHardwarePresent" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Hardware support for branch target injection mitigation is present:"/>
+                    <Label x:Name="BTIHardwarePresent_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="BTIHardwarePresent_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" x:Name="BTIWindowsSupportPresent" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Windows OS support for branch target injection mitigation is present:"/>
+                    <Label x:Name="BTIWindowsSupportPresent_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="BTIWindowsSupportPresent_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" x:Name="BTIWindowsSupportEnabled" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Windows OS support for branch target injection mitigation is enabled:"/>
+                    <Label x:Name="BTIWindowsSupportEnabled_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="BTIWindowsSupportEnabled_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" x:Name="BTIDisabledBySystemPolicy" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Windows OS support for branch target injection mitigation is disabled by system policy:"/>
+                    <Label x:Name="BTIDisabledBySystemPolicy_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="BTIDisabledBySystemPolicy_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" x:Name="BTIDisabledByNoHardwareSupport" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Windows OS support for branch target injection mitigation is disabled by absence of hardware support:"/>
+                    <Label x:Name="BTIDisabledByNoHardwareSupport_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="BTIDisabledByNoHardwareSupport_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label x:Name="CVE20175754" Content="Speculation control settings for CVE-2017-5754 [rogue data cache load]" FontSize="16" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" x:Name="KVAShadowRequired" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Hardware requires kernel VA shadowing:"/>
+                    <Label x:Name="KVAShadowRequired_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="KVAShadowRequired_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" x:Name="KVAShadowWindowsSupportPresent" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Windows OS support for kernel VA shadow is present:"/>
+                    <Label x:Name="KVAShadowWindowsSupportPresent_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="KVAShadowWindowsSupportPresent_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" x:Name="KVAShadowWindowsSupportEnabled" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Windows OS support for kernel VA shadow is enabled:"/>
+                    <Label x:Name="KVAShadowWindowsSupportEnabled_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="KVAShadowWindowsSupportEnabled_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" x:Name="KVAShadowPcidEnabled" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Windows OS support for PCID optimization is enabled:"/>
+                    <Label x:Name="KVAShadowPcidEnabled_True" Content="√ True" Visibility="Collapsed" Foreground="Green"/>
+                    <Label x:Name="KVAShadowPcidEnabled_False" Content="X False" Visibility="Collapsed" Foreground="Red"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="Suggested">
+                <Label Content="Suggested actions" FontSize="16" FontWeight="Bold"/>
+                <StackPanel x:Name="Suggested_BTIHardwarePresent" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Install BIOS/firmware update provided by your device OEM that enables hardware support for the branch target injection mitigation."/>
+                </StackPanel>
+                <StackPanel x:Name="Suggested_Update" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Install the latest available updates for Windows with support for speculation control mitigations."/>
+                </StackPanel>
+                <StackPanel x:Name="Suggested_Support" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Label Content="Follow the guidance for enabling Windows support for speculation control mitigations." />
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock>
+                            Cilent:
+                            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://support.microsoft.com/help/4073119">
+                                https://support.microsoft.com/help/4073119
+                            </Hyperlink>
+                        </TextBlock>
+                        <TextBlock>
+                            Server:
+                            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://support.microsoft.com/help/4072698">
+                                https://support.microsoft.com/help/4072698
+                            </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
+            <TextBlock>
+                Validate using script:
+                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://support.microsoft.com/en-us/help/4073119">
+                    https://support.microsoft.com/en-us/help/4073119
+                </Hyperlink>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock>
+                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/settachok/SpectreCheck">
+                        Source Code on GitHub
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
